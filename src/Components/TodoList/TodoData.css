@@ -1,0 +1,66 @@
+.todo-data {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-data__fallback {
+  color: rgb(245, 6, 6);
+  text-align: center;
+}
+
+/* Sorting */
+.btn {
+  border: none;
+  font-family: "Lato";
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 25px 345px;
+  display: inline-block;
+  margin: 15px 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+/* Button 2 */
+.btn-2 {
+  background: #43265d;
+  color: #fff;
+}
+
+.btn-2:hover {
+  background: #881db9;
+}
+
+.btn-2:before {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  line-height: 3;
+  font-size: 140%;
+  width: 60px;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 8px;
+}
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
