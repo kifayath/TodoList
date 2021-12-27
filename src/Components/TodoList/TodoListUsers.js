@@ -66,7 +66,7 @@ const TodoListUsers = (props) => {
             &nbsp;
             <img
               src={editImp}
-              onClick={editHandler.bind(this,  {
+              onClick={editHandler.bind(this, {
                 id: props.id,
                 name: props.name,
                 desc: props.desc,
@@ -74,7 +74,6 @@ const TodoListUsers = (props) => {
               })}
               alt="Edit"
               height={18}
-              TodoListDate
               width={18}
               style={cssButtonStyle}
             ></img>

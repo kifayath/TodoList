@@ -1,5 +1,5 @@
 import "./Form.css";
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 import Input from "../UI/Input";
@@ -8,6 +8,12 @@ import EditContent from "../../store/edit-content";
 const Form = (props) => {
   // useContent is used for the edit functionality
   const etc = useContext(EditContent);
+  const [upd, setUpd] = useState({});
+
+  useEffect(() => {
+    let tempObj = { ...etc.onGetJsonData };
+    setUpd(tempObj);
+  }, [etc]);
 
   // Initializing the values with reference proces
   const todoId = useRef();
@@ -94,27 +100,21 @@ const Form = (props) => {
             name="todoId"
             id="todoId"
             type="hidden"
-            value={
-              etc.onGetJsonData["id"] !== "" ? etc.onGetJsonData["id"] : ""
-            }
+            value={upd.id !== "" ? upd.id : ""}
             ref={todoId}
           />
           <Input
             label="Name"
             id="name"
             type="text"
-            value={
-              etc.onGetJsonData["name"] !== "" ? etc.onGetJsonData["name"] : ""
-            }
+            value={upd.name}
             ref={enteredName}
           />
           <Input
             label="Description"
             id="desc"
             type="text"
-            value={
-              etc.onGetJsonData["desc"] !== "" ? etc.onGetJsonData["desc"] : ""
-            }
+            value={upd.desc !== "" ? upd.desc : ""}
             ref={enteredDesc}
           />
 

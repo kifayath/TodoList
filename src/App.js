@@ -4,6 +4,7 @@ import TodoList from "../src/Components/TodoList/TodoList";
 import NewTodoForm from "./Components/NewTodo/NewTodoForm";
 import EditContent from "./store/edit-content";
 import Login from "./Components/Login/Login";
+import Modal from "./Components/UI/Modal";
 // Sample Dummpy Data
 const Dummy_Data = [
   {
@@ -50,6 +51,8 @@ function App() {
   const [loginName, setLoginName] = useState("");
   // Activate todo list
   const [activeTodo, setActiveTodo] = useState(false);
+  // Authentication error
+  const [authError, setAuthError] = useState(false);
 
   // Show Form
   const showHideFormHandler = (formValue) => {
@@ -83,14 +86,21 @@ function App() {
     setUpdTodo(jsonD);
   };
 
+  // set error handler
+  const errorHandler = () => {
+    setAuthError(false);
+  };
+
   // Local Storage
-  const localStorageHandler = () => {
-    setLoginStatus(true);
+  const localStorageHandler = (lStatus) => {
+    setLoginStatus(lStatus);
+    if (lStatus === false) {
+      setAuthError(!lStatus);
+    }
   };
 
   // Update Login Name
   const loginNameHandler = (loginName) => {
-    console.log(loginName);
     setLoginName(loginName);
   };
   const localStorageLogoutHandler = () => {
@@ -131,6 +141,13 @@ function App() {
       )}
       {loginStatus && activeTodo && (
         <TodoList todo={todoArr} delTodoId={delTodoListHandler} />
+      )}
+      {authError && (
+        <Modal
+          header="Alert"
+          message="Authentication is failed"
+          setError={errorHandler}
+        />
       )}
     </EditContent.Provider>
   );
